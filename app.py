@@ -185,7 +185,7 @@ def main():
         with st.spinner("AI scanning :robot:"):
             if 'emb_dict' not in st.session_state:
                 st.session_state.emb_dict = load_embeddings_dict(
-                    './word_embeddings3.pickle')
+                    'word_embeddings3.pickle')
             if 'pdf' not in st.session_state:
                 st.session_state.pdf = uploaded_file.getvalue()
                 pdfObj = PDFObject(st.session_state.emb_dict)
