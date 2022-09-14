@@ -1,1 +1,2 @@
 word_embeddings.pickle filter=lfs diff=lfs merge=lfs -text
+word_embeddings2.pickle filter=lfs diff=lfs merge=lfs -text
