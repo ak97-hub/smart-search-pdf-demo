@@ -132,7 +132,7 @@ def show_header(lottie_path):
 
 
 def main():
-    st.set_page_config(page_title='My App',
+    st.set_page_config(page_title='Smart Scanner',
                        layout='wide',
                        page_icon=':rocket:')
     remove_padding()
@@ -180,7 +180,9 @@ def main():
     st.title('Search Intelligently')
 
     uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
-
+    if not uploaded_file:
+        with open("./images/Profile.pdf", "rb") as pdf_file:
+            uploaded_file = pdf_file.read()
     if uploaded_file:
         with st.spinner("AI scanning :robot:"):
             if 'emb_dict' not in st.session_state:
