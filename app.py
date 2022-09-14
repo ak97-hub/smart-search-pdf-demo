@@ -208,6 +208,9 @@ def main():
                 st.write(search_value)
                 pdfObj.get_word_similarities(search_value.lower())
 
+            else:
+                st.write("working on sentences next..")
+
         img = Image.open('./images/matches.png')
         img = np.array(img)
         st.image(img)
