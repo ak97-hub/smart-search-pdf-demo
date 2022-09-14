@@ -64,7 +64,7 @@ class PDFObject:
         try:
             return self.embeddings_dict[word]
         except KeyError:
-            return np.zeros(512)
+            return np.zeros(128)
 
     def _get_inner_product_(self, embedding1, embedding2):
         try:
