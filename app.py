@@ -194,7 +194,10 @@ def main():
                 pdfObj.read_pdf(st.session_state.pdf)
             else:
                 if uploaded_file != st.session_state.pdf:
-                    st.session_state.pdf = uploaded_file.getvalue()
+                    try:
+                        st.session_state.pdf = uploaded_file.getvalue()
+                    except AttributeError:
+                        st.session_state.pdf = uploaded_file
                     pdfObj = PDFObject(st.session_state.emb_dict)
                     pdfObj.read_pdf(st.session_state.pdf)
 
