@@ -189,7 +189,10 @@ def main():
                 st.session_state.emb_dict = load_embeddings_dict(
                     'word_embeddings3.pickle')
             if 'pdf' not in st.session_state:
-                st.session_state.pdf = uploaded_file.getvalue()
+                try:
+                    st.session_state.pdf = uploaded_file.getvalue()
+                except AttributeError:
+                    st.session_state.pdf = uploaded_file
                 pdfObj = PDFObject(st.session_state.emb_dict)
                 pdfObj.read_pdf(st.session_state.pdf)
             else:
