@@ -180,30 +180,24 @@ def main():
     st.title('Search Intelligently')
 
     uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
-    if not uploaded_file:
+    try:
+        if 'pdf' not in st.session_state or \
+                uploaded_file != st.session_state.pdf:
+            st.session_state.pdf = uploaded_file.getvalue()
+
+    except AttributeError:
         with open("./images/Profile.pdf", "rb") as pdf_file:
             uploaded_file = pdf_file.read()
+        st.session_state.pdf = uploaded_file
+
     if uploaded_file:
         with st.spinner("AI scanning :robot:"):
             if 'emb_dict' not in st.session_state:
                 st.session_state.emb_dict = load_embeddings_dict(
                     'word_embeddings3.pickle')
-            if 'pdf' not in st.session_state:
-                try:
-                    st.session_state.pdf = uploaded_file.getvalue()
-                except AttributeError:
-                    st.session_state.pdf = uploaded_file
-                pdfObj = PDFObject(st.session_state.emb_dict)
-                pdfObj.read_pdf(st.session_state.pdf)
-            else:
-                if uploaded_file != st.session_state.pdf:
-                    try:
-                        st.session_state.pdf = uploaded_file.getvalue()
-                    except AttributeError:
-                        st.session_state.pdf = uploaded_file
-                    pdfObj = PDFObject(st.session_state.emb_dict)
-                    pdfObj.read_pdf(st.session_state.pdf)
 
+    pdfObj = PDFObject(st.session_state.emb_dict)
+    pdfObj.read_pdf(st.session_state.pdf)
     pdf_col1, pdf_col2 = st.columns([4, 10])
 
     with pdf_col1:
