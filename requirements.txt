@@ -4,3 +4,4 @@ google-cloud-aiplatform
 Pillow
 numpy
 pandas
+streamlit-lottie
