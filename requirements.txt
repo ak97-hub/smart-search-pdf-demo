@@ -1,0 +1,6 @@
+streamlit
+PyMuPDF
+google-cloud-aiplatform
+Pillow
+numpy
+pandas
