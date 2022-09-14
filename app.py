@@ -199,12 +199,12 @@ def main():
     pdf_col1, pdf_col2 = st.columns([4, 10])
 
     with pdf_col1:
-        search_value = st.text_input("Search")
+        search_value = st.text_input("Search", value="data")
         if search_value:
             pdfObj.reset_pdf()
             if len(search_value.split()) == 1:
                 st.write(search_value)
-                pdfObj.get_word_similarities(search_value)
+                pdfObj.get_word_similarities(search_value.lower())
 
         img = Image.open('./images/matches.png')
         img = np.array(img)
@@ -216,7 +216,7 @@ def main():
         elif uploaded_file and search_value:
             show_pdf_obj(pdfObj.pdfIn.write())
         else:
-            show_pdf("./images/sample.pdf")
+            show_pdf("./images/profile.pdf")
 
 
 if __name__ == "__main__":
