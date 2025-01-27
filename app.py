@@ -93,7 +93,6 @@ class PDFObject:
                 page.delete_annot(annot)
 
 
-@st.cache
 def load_embeddings_dict(embeddings_dict_path):
     with open(embeddings_dict_path, 'rb') as f:
         embeddings_dict = pickle.load(f)
