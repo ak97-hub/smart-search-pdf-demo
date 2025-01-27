@@ -7,6 +7,7 @@ import numpy as np
 import fitz
 import pickle
 from PIL import Image
+from io import BytesIO
 
 
 class PDFObject:
