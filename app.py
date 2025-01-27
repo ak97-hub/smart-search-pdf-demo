@@ -129,7 +129,6 @@ def show_header(lottie_path):
     data = json.load(f)
     st_lottie(data, height=50, key='coding', speed=1)
 
-
 def main():
     st.set_page_config(page_title='Smart Scanner',
                        layout='wide',
@@ -223,10 +222,8 @@ def main():
             pdfObj.pdfIn.save(pdf_buffer)
             pdf_buffer.seek(0)  # Reset the buffer's position to the beginning
             show_pdf_obj(pdf_buffer.read())
-            #show_pdf_obj(pdfObj.pdfIn.write())
         else:
             show_pdf("./images/profile.pdf")
-
 
 if __name__ == "__main__":
     main()
