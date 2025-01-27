@@ -218,7 +218,12 @@ def main():
         if uploaded_file and not search_value:
             show_pdf_obj(st.session_state.pdf)
         elif uploaded_file and search_value:
-            show_pdf_obj(pdfObj.pdfIn.write())
+            # Save the modified PDF to a BytesIO buffer
+            pdf_buffer = BytesIO()
+            pdfObj.pdfIn.save(pdf_buffer)
+            pdf_buffer.seek(0)  # Reset the buffer's position to the beginning
+            show_pdf_obj(pdf_buffer.read())
+            #show_pdf_obj(pdfObj.pdfIn.write())
         else:
             show_pdf("./images/profile.pdf")
 
